@@ -1,0 +1,391 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crystal Collector Game</title>
+
+    <!-- Linking CSS style sheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+    <!-- Responsive Content Container -->
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Crystal Collector Game</h1>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Instructions</h1>
+                <p><title>Correct Gem Picker</title>
+
+                    <!-- Bootstrap File -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+                  
+                    <!-- JQuery -->
+                    <script src="https://code.jquery.com/jquery.js"></script>
+                  
+                    <style>
+                      #rand-target-color,
+                      #color-picker li {
+                        font-size: 24px;
+                      }
+                    </style>
+                  
+                  </head>
+                  <body>
+                  
+                    <div class="container">
+                      <h2>Correct Color Picker</h2>
+                      <p>Pick the <b>color</b> of the word shown from the list below it.</p>
+                  
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">
+                  
+                            <!-- Create random target color -->
+                            <span id="rand-target-color">
+                            </span>
+                  
+                          </h3>
+                        </div>
+                        <div class="card-body">
+                  
+                          <!-- Create colors to pick -->
+                          <ul class="list-unstyled" id="color-picker">
+                          </ul>
+                  
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <script>
+                  
+                      // JavaScript function that wraps everything
+                      $(document).ready(function() {
+                  
+                        // Array for word colors
+                        var colorsOfText = [];
+                  
+                        // Target word
+                        var targetColor;
+                  
+                        // Target word color
+                        var targetColorOfText;
+                  
+                        // User"s selection
+                        var userAnswer;
+                  
+                        // Array for words
+                        var colors = [
+                          "brown",
+                          "blue",
+                          "magenta",
+                          "teal",
+                          "coral",
+                          "black"
+                        ];
+                  
+                        // This function sets a random color "word" and a random set of colors "visuals"
+                        function randColor() {
+                  
+                          // Set random word
+                          targetColor = colors[Math.floor(Math.random() * colors.length)];
+                          $("#rand-target-color").text(targetColor);
+                  
+                          // Set random word color
+                          targetColorOfText = colors[Math.floor(Math.random() * colors.length)];
+                          $("#rand-target-color").css("color", targetColorOfText);
+                        }
+                  
+                        // This function creates the actual "game" logic.
+                        function createColorPicker() {
+                  
+                          // Shuffle color array
+                          colors.sort(function() {
+                            return 0.5 - Math.random();
+                          });
+                  
+                          // Push to text color array
+                          for (var i = 0; i < colors.length; i++) {
+                            colorsOfText.push(colors[i]);
+                          }
+                  
+                          // Shuffle text color array
+                          colorsOfText.sort(function() {
+                            return 0.5 - Math.random();
+                          });
+                  
+                          // Loop through all colors in the array
+                          for (var i = 0; i < colors.length; i++) {
+                  
+                            // Create element to hold word
+                            var holder = document.createElement("li");
+                            $("#color-picker").append(holder);
+                  
+                            // Output a word
+                            $(holder).attr("id", colors[i]).text(colors[i]);
+                  
+                            // Make word a random color
+                            $(holder).css("color", colorsOfText[i]);
+                          }
+                        }
+                  
+                        // Clear the divs and arrays upon each round.
+                        function clear() {
+                          $("#rand-target-color").empty();
+                          $("#color-picker").empty();
+                          colorsOfText = [];
+                        }
+                  
+                        // Function for resetting colors and setting new colors.
+                        function reset() {
+                          clear();
+                          randColor();
+                          createColorPicker();
+                        }
+                  
+                        // Get id of element clicked by user
+                        $("#color-picker").click(function(event) {
+                          userAnswer = event.target.id;
+                  
+                          // Compare id to target id
+                          if (userAnswer === targetColorOfText) {
+                            alert("You win!");
+                            reset();
+                          }
+                          else {
+                            alert("Wrong!");
+                            reset();
+                          }
+                        });
+                  
+                        // Run game
+                        reset();
+                      });
+                  
+                    </script>
+                  </body>
+                  </html></p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>
+                        <h1>Crystal score: <span id="number-to-guess"></span></h1>
+                        <div id="crystals">
+                      
+                          <img class="crystal-image" src="http://empresscrystal.com/images/crystal_home_button.jpg" alt="crystals">
+                      
+                        </div>
+                      
+                       
+                        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                      
+                        <script type="text/javascript">
+                      
+                        var targetNumber = 55;
+                      
+                        $("#number-to-guess").text(targetNumber);
+                      
+                        var counter = 0;
+                      
+                      
+                        var numberOptions = [10, 11];
+                        var increment = numberOptions[Math.round(Math.random())];
+                      
+                        $(".crystal-image").on("click", function() {
+                      
+                        
+                          counter += increment;
+                      
+                          alert("New score: " + counter);
+                      
+                          if (counter === targetNumber) {
+                            alert("You win!");
+                          }
+                      
+                          else if (counter >= targetNumber) {
+                            alert("You lose!!");
+                          }
+                      
+                        });
+                      
+                        </script></h2>
+                <p id="crystal-needed">0</p>
+            </div>
+            <div class="col-md-4">
+                <h2>Crystal Power Gained</h2>
+                <p id="crystal-gained">0</p>
+            </div>
+            <div class="col-md-2">
+                <h2>Wins</h2>
+                <p id="wins">0</p>
+            </div>
+            <div class="col-md-2">
+                <h2>Losses</h2>
+                <p id="losses">0</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h3 id="black-crystal-header"><h1 class="text-center">Generate a Random CYSTAL!</h1>
+                    
+                    <div class="text-center">
+                
+                      
+                      <button id="random-button" class="btn btn-primary btn-lg fa fa-question"></button>
+                
+                    </div>
+                
+                  </div>
+                
+                  <h1 class="text-center" id="random-number"></h1>
+                
+                  <script type="text/javascript">
+                
+                    $(document).ready(function() {
+                
+                     
+                      $("#random-button").on("click", function() {
+                
+                      
+                        var random = Math.floor(Math.random() * 1000) + 1;
+                
+                      
+                        $("#random-number").text(random);
+                
+                      });
+                
+                    });
+                    
+                      </script></h3>
+                <img class="crystal-image" id="black-crystal-image" src="assets/images/black_crystal.png" height= alt="Black Crystal">
+            </div>
+            <div class="col-md-3">
+                <h3 id="purple-crystal-header"><h1 class="text-center">Generate a Random CYSTAL!</h1>
+                    
+                    <div class="text-center">
+                
+                      
+                      <button id="random-button" class="btn btn-primary btn-lg fa fa-question"></button>
+                
+                    </div>
+                
+                  </div>
+                
+                  <h1 class="text-center" id="random-number"></h1>
+                
+                  <script type="text/javascript">
+                
+                    $(document).ready(function() {
+                
+                     
+                      $("#random-button").on("click", function() {
+                
+                      
+                        var random = Math.floor(Math.random() * 1000) + 1;
+                
+                      
+                        $("#random-number").text(random);
+                
+                      });
+                
+                    });
+                    
+                      </script></h3>
+                <img class="crystal-image" id="purple-crystal-image" src="https://image.freepik.com/free-vector/low-poly-background_53876-66427.jpg" height= alt="Purple Crystal">
+            </div>
+            <div class="col-md-3">
+                <h3 id="red-crystal-header"><h1 class="text-center">Generate a Random CYSTAL!</h1>
+                    
+                    <div class="text-center">
+                
+                      
+                      <button id="random-button" class="btn btn-primary btn-lg fa fa-question"></button>
+                
+                    </div>
+                
+                  </div>
+                
+                  <h1 class="text-center" id="random-number"></h1>
+                
+                  <script type="text/javascript">
+                
+                    $(document).ready(function() {
+                
+                     
+                      $("#random-button").on("click", function() {
+                
+                      
+                        var random = Math.floor(Math.random() * 1000) + 1;
+                
+                      
+                        $("#random-number").text(random);
+                
+                      });
+                
+                    });
+                    
+                      </script></h3>
+                <img class="crystal-image" id="red-crystal-image" src="assets/images/red_crystal.png" height= alt="Red Crystal">
+            </div>
+            <div class="col-md-3">
+                <h3 id="green-crystal-header"><h1 class="text-center">Generate a Random CYSTAL!</h1>
+                    
+                    <div class="text-center">
+                
+                      
+                      <button id="random-button" class="btn btn-primary btn-lg fa fa-question"></button>
+                
+                    </div>
+                
+                  </div>
+                
+                  <h1 class="text-center" id="random-number"></h1>
+                
+                  <script type="text/javascript">
+                
+                    $(document).ready(function() {
+                
+                     
+                      $("#random-button").on("click", function() {
+                
+                      
+                        var random = Math.floor(Math.random() * 1000) + 1;
+                
+                      
+                        $("#random-number").text(random);
+                
+                      });
+                
+                    });
+                    
+                      </script></h3>
+                <img class="crystal-image" id="green-crystal-image" src="assets/images/green_crystal.png" height= alt="Green Crystal">
+            </div>
+        </div>  
+    </div>
+
+    <!-- Linking javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/java.js"></script>    
+
+</body>
+</html>

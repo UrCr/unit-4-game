@@ -1,0 +1,43 @@
+.container-fluid {
+    text-align: center;
+}
+
+.row {
+    background-image: url("https://backgrounddownload.com/wp-content/uploads/2018/09/crystal-background-hd-6.jpg");
+    text-align: center;
+    background-color: rgb(173, 29, 36);
+}
+
+h1 {
+    color: gray;
+}
+
+h2 {
+    color: gray;
+}
+
+#black-crystal-header {
+    color: black;
+}
+
+#purple-crystal-header {
+    color: purple;
+}
+
+#red-crystal-header {
+    color: red;
+}
+
+#green-crystal-header {
+    color: #12E09C;
+}
+
+p {
+    line-height: 80%;
+    color: white;
+}
+
+.crystal-image {
+    height: 300px;
+    width: 300px;
+}
